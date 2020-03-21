@@ -98,13 +98,6 @@
             android:textColor="@android:color/white"
             android:text="@string/register"/>
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_arrow_left"
-            android:layout_above="@id/swipeLeft"
-            android:layout_centerHorizontal="true"/>
-
         <TextView
             android:id="@+id/swipeLeft"
             android:layout_width="wrap_content"

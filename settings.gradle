@@ -1,2 +1,2 @@
-rootProject.name='ip-app'
+rootProject.name='xscanner'
 include ':app'

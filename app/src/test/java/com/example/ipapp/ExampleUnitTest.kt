@@ -1,4 +1,4 @@
-package com.example.ip_app
+package com.example.ipapp
 
 import org.junit.Test
 

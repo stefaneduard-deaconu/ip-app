@@ -1,4 +1,4 @@
-package com.example.ip_app.ui.notifications
+package com.example.ipapp.ui.docs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +8,22 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.ip_app.R
+import com.example.ipapp.R
 
-class NotificationsFragment : Fragment() {
+class DocsFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var docsViewModel: DocsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
+        docsViewModel =
+                ViewModelProviders.of(this).get(DocsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_docs, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        docsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

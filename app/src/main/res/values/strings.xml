@@ -9,7 +9,7 @@
     <string name="login_instead">You want to login?</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-<!--    for the forms:-->
+    <!--    for the forms:-->
     <string name="login">Sign in</string>
 
     <string name="email_hint">Sign in</string>

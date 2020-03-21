@@ -1,4 +1,4 @@
-package com.example.ip_app.ui.dashboard
+package com.example.ipapp.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.ip_app.R
+import com.example.ipapp.R
 
 class DashboardFragment : Fragment() {
 

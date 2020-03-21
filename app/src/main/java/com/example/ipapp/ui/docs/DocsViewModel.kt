@@ -1,13 +1,13 @@
-package com.example.ip_app.ui.home
+package com.example.ipapp.ui.docs
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class DocsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Sign up to turn digital"
+        value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
 }
