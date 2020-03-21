@@ -12,6 +12,7 @@ import android.widget.ImageView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.core.content.FileProvider.getUriForFile
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.IOException
+import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,10 +33,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var currentPhotoPath: String
 
     @Throws(IOException::class)
-    private fun createImageFile(): File {
-        // Create an image file name
+    private fun createImageFile(): File? {
+
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */
             ".jpg", /* suffix */
@@ -52,25 +54,29 @@ class MainActivity : AppCompatActivity() {
             // Ensure that there's a camera activity to handle the intent
             takePictureIntent.resolveActivity(packageManager)?.also {
                 // Create the File where the photo should go
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    // Error occurred while creating the File
-                    Log.d("Intent","Eroare")
-                    null
-                }
+                var photoFile: File? = null
+                try{
+                   photoFile = createImageFile()
+                } catch (ex: IOException) { }
                 // Continue only if the File was successfully created
                 photoFile?.also { Log.d("Intent","Eroare1")
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                        this,
+                    val photoURI = getUriForFile(
+                        applicationContext,
                         "com.example.ip_app.fileprovider",
-                        it
+                        photoFile
                     )
                     Log.d("Intent","Eroare")
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            picture.rotation = 90f
+            picture.setImageURI(Uri.parse(currentPhotoPath))
         }
     }
 
