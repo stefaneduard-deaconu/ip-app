@@ -24,6 +24,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.ipapp.ui.home.HomeFragmentDirections
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 import java.io.File
 import java.io.IOException
 import java.net.URI
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity() {
 
     fun loadLoginFragment(v: View) {
         val action = HomeFragmentDirections.actionNavigationHomeToLoginFragment()
+        navController.navigate(action)
+    }
+    fun loadRegisterFragment(v: View) {
+        val action = HomeFragmentDirections.actionNavigationHomeToRegisterFragment()
         navController.navigate(action)
     }
 
@@ -60,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     val REQUEST_IMAGE_CAPTURE = 1
 
-    fun pressCameraButtonAction() {
+    fun pressCameraButtonAction(v: View) {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             // Ensure that there's a camera activity to handle the intent
             takePictureIntent.resolveActivity(packageManager)?.also {
@@ -106,9 +111,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        cameraButton.setOnClickListener{
-            pressCameraButtonAction()
-        }
+
     }
 
 }
