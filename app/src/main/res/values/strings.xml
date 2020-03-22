@@ -5,15 +5,15 @@
     <string name="title_docs">Docs</string>
 
     <string name="new_user">Sign up to turn your docs digital</string>
-    <string name="register_instead">No Account? Register :).</string>
+    <string name="register_instead">No Account? Register :)</string>
     <string name="login_instead">You want to login?</string>
     <!-- TODO: Remove or change this placeholder text -->
 
     <!--    for the forms:-->
     <string name="login">Sign in</string>
 
-    <string name="email_hint">Sign in</string>
-    <string name="password_hint">Sign in</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
     <string name="register">Sign Up</string>
 
     <string name="tag">Let\'s join us and \nBuild your relationship with others</string>

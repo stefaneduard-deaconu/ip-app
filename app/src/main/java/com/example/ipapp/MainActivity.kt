@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            picture.rotation = 90f
             picture.setImageURI(Uri.parse(currentPhotoPath))
+
         }
     }
 
