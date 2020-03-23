@@ -19,13 +19,45 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.ipapp.ui.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_docs.*
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class MainActivity : AppCompatActivity() {
+
+    fun docNew(v: View) {
+        text_docs.text = "new doc"
+    }
+    fun docSync(v: View) {
+        text_docs.text = "sync docs"
+    }
+    fun docAddPhoto(v: View) {
+        // called after we have the photo saved, always
+    }
+    fun docDelete(v: View) {
+
+    }
+    fun docUpdate(v: View) {
+
+    }
+    fun userLogin(v: View) {
+
+    }
+    fun userRegister(v: View) {
+
+    }
+    fun userUpdate(v: View) {
+
+    }
+    fun userDelete(v: View) {
+
+    }
+    // ??? when we logout, shouldn't the local files be deleted?
+    fun userLogout(v: View) {
+        // Maybe PASS for this version of the app
+    }
 
     lateinit var navView: BottomNavigationView
     lateinit var navController: NavController

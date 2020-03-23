@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.ipapp.R
+import kotlinx.android.synthetic.main.fragment_docs.*
 
 class DocsFragment : Fragment() {
 
     private lateinit var docsViewModel: DocsViewModel
+
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -22,7 +25,7 @@ class DocsFragment : Fragment() {
         docsViewModel =
                 ViewModelProviders.of(this).get(DocsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_docs, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
+        val textView: TextView = root.findViewById(R.id.text_docs)
         docsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
