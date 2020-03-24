@@ -24,28 +24,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
-    <ImageButton
-        android:id="@+id/imageButtonNew"
-        android:onClick="docNew"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="76dp"
-        android:backgroundTint="@color/transparent"
-        android:src="@drawable/ic_doc_new_96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButtonSync"
-        android:onClick="docSync"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="76dp"
-        android:backgroundTint="@color/transparent"
-        android:src="@drawable/ic_sync_96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

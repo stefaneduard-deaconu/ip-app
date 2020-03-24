@@ -1,6 +1,7 @@
 package com.example.ipapp
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -16,6 +17,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ipapp.model.PAR
 import com.example.ipapp.ui.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,20 +30,32 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class MainActivity : AppCompatActivity() {
+
+    lateinit var recyclerView: RecyclerView
+    lateinit var viewAdapter: RecyclerView.Adapter<*>
+    lateinit var viewManager: RecyclerView.LayoutManager
+    var bitmaps: Array<Bitmap?> = arrayOfNulls(10)
+    var bitmapCount = 0
+
 
     internal lateinit var db:OpenHelper
     internal var lstPAR:List<PAR> = ArrayList<PAR>()
 
 
+    fun docSync(v: View) {
+        text_docs.text = "sync docs"
+    }
+    fun docDeleteAll(v: View) {
+
+    }
 
     fun docNew(v: View) {
         text_docs.text = "new doc"
     }
-    fun docSync(v: View) {
-        text_docs.text = "sync docs"
-    }
-    fun docAddPhoto(v: View) {
+
+    fun docAddPar(v: View) {
         // called after we have the photo saved, always
     }
     fun docDelete(v: View) {
@@ -128,15 +143,13 @@ class MainActivity : AppCompatActivity() {
 //            picture.setImageURI(Uri.parse(currentPhotoPath))
 
             val bitmap = BitmapFactory.decodeFile(currentPhotoPath)
-            val bytes = File(currentPhotoPath).readBytes()
-            val base64 = Base64.getEncoder().encodeToString(bytes)
-            val ext = MimeTypeMap.getFileExtensionFromUrl(currentPhotoPath)
-            val decoded = Base64.getDecoder().decode(base64)
-            val bitmap2 = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
-//            TODO add this to the sqlite DB that you're going to implement :D
-            picture.setImageBitmap(bitmap2)
+//            val ext = MimeTypeMap.getFileExtensionFromUrl(currentPhotoPath)
+//            TODO when keeping images in the DB, we'll also save the extension :))
+            bitmaps.set(bitmapCount, bitmap)
+            bitmapCount++
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -153,5 +166,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
 }
